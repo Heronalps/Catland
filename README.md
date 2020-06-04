@@ -2,10 +2,10 @@
 
 ## Build and Run
 ```
-cd ./build
+mkdir build && cd ./build
 cmake ..
 make
-cd ../src && ./foobar.wt --docroot . --http-listen 0.0.0.0:8080
+cd .. && ./build/src/catland.wt --docroot . --http-listen 0.0.0.0:8080
 ```
 ## TODO
 

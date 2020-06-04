@@ -1,5 +1,5 @@
 INCLUDE(CheckFunctionExists)
-SET(WT_PROJECT_TARGET hangman.wt)
+SET(WT_PROJECT_TARGET catland.wt)
 
 FIND_PACKAGE(Wt REQUIRED Wt HTTP Dbo DboSqlite3)
 
