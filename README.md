@@ -1,5 +1,12 @@
 # Catland
 
+## Build and Run
+```
+cd ./build
+cmake ..
+make
+cd ../src && ./foobar.wt --docroot . --http-listen 0.0.0.0:8080
+```
 ## TODO
 
 ### Process
