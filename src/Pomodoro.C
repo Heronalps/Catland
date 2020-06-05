@@ -32,6 +32,9 @@ Pomodoro::Pomodoro():
   std::unique_ptr<WText> title(cpp14::make_unique<WText>("<h1>Catland</h1>"));
   addWidget(std::move(title));
 
+  WImage *loginPic = addWidget(std::move(cpp14::make_unique<WImage>("icons/login.png")));
+  loginPic->setStyleClass("front");
+
   addWidget(std::move(authWidget));
 
   mainStack_ = new WStackedWidget();
@@ -43,8 +46,8 @@ Pomodoro::Pomodoro():
   links_->hide();
   addWidget(std::unique_ptr<WContainerWidget>(links_));
 
-  backToGameAnchor_ = links_->addWidget(cpp14::make_unique<WAnchor>("/play", "Gaming Grounds"));
-  backToGameAnchor_->setLink(WLink(LinkType::InternalPath, "/play"));
+  backToGameAnchor_ = links_->addWidget(cpp14::make_unique<WAnchor>("/pomodoro", "Pomodoro"));
+  backToGameAnchor_->setLink(WLink(LinkType::InternalPath, "/pomodoro"));
 
   scoresAnchor_ = links_->addWidget(cpp14::make_unique<WAnchor>("/history", "History"));
   scoresAnchor_->setLink(WLink(LinkType::InternalPath, "/history"));
@@ -71,12 +74,12 @@ void Pomodoro::onAuthEvent()
 void Pomodoro::handleInternalPath(const std::string &internalPath)
 {
   if (session_.login().loggedIn()) {
-    if (internalPath == "/play")
+    if (internalPath == "/pomodoro")
       showGame();
     else if (internalPath == "/history")
       showHistory();
     else
-      WApplication::instance()->setInternalPath("/play",  true);
+      WApplication::instance()->setInternalPath("/pomodoro",  true);
   }
 }
 

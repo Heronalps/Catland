@@ -25,7 +25,7 @@ PomodoroWidget::PomodoroWidget(const std::string &name)
 {
   setContentAlignment(AlignmentFlag::Center);
   
-  title_ = addWidget(cpp14::make_unique<WText>(tr("Pomodoro.readyToPlay")));
+  title_ = addWidget(cpp14::make_unique<WText>(tr("pomodoro.readyToPlay")));
 
   word_ = addWidget(cpp14::make_unique<WordWidget>());
   statusText_ = addWidget(cpp14::make_unique<WText>());
@@ -35,12 +35,12 @@ PomodoroWidget::PomodoroWidget(const std::string &name)
   letters_->letterPushed().connect(this, &PomodoroWidget::registerGuess);
 
   language_ = addWidget(cpp14::make_unique<WComboBox>());
-  language_->addItem(tr("Pomodoro.englishWords").arg(18957));
-  language_->addItem(tr("Pomodoro.dutchWords").arg(1688));
+  language_->addItem(tr("pomodoro.englishWords").arg(18957));
+  language_->addItem(tr("pomodoro.dutchWords").arg(1688));
 
   addWidget(cpp14::make_unique<WBreak>());
 
-  newGameButton_ = addWidget(cpp14::make_unique<WPushButton>(tr("Pomodoro.newGame")));
+  newGameButton_ = addWidget(cpp14::make_unique<WPushButton>(tr("pomodoro.newGame")));
   newGameButton_->clicked().connect(this, &PomodoroWidget::newGame);
 
   letters_->hide();

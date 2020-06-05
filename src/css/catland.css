@@ -4,11 +4,18 @@ body {
 }
 
 h1 {
-    text-align: left;
+    text-align: center;
 }
 
 .mainstack {
     margin: 20px 40px;
+}
+
+.front {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 70%;
 }
 
 .links {
@@ -17,8 +24,8 @@ h1 {
 }
 
 .links a {
-    padding-left: 5px;
-    padding-right: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
 }
 
 .history table {
