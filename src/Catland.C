@@ -1,9 +1,3 @@
-/*
- * Copyright (C) 2011 Emweb bv, Herent, Belgium
- *
- * See the LICENSE file for terms of use.
- */
-
 #include <Wt/WApplication.h>
 #include <Wt/WServer.h>
 
@@ -16,7 +10,7 @@ std::unique_ptr<WApplication> createApplication(const WEnvironment& env)
 {
   auto app = cpp14::make_unique<WApplication>(env);
   
-  app->setTitle("Catland Live");
+  app->setTitle("Catland");
 
   app->messageResourceBundle().use(app->appRoot() + "strings");
   app->messageResourceBundle().use(app->appRoot() + "templates");

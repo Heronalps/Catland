@@ -1,9 +1,3 @@
-/*
- * Copyright (C) 2011 Emweb bv, Herent, Belgium.
- *
- * See the LICENSE file for terms of use.
- */
-
 #include "Session.h"
 
 #include "Wt/Auth/AuthService.h"

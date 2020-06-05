@@ -1,12 +1,13 @@
 body {
     font-family: arial;
+    background-color: lightblue;
 }
 
 h1 {
-    text-align: center;
+    text-align: left;
 }
 
-.gamestack {
+.mainstack {
     margin: 20px 40px;
 }
 

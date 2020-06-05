@@ -1,9 +1,3 @@
-/*
- * Copyright (C) 2011 Emweb bv, Herent, Belgium
- *
- * See the LICENSE file for terms of use.
- */
-
 #include <Wt/WAnchor.h>
 #include <Wt/WText.h>
 #include <Wt/WStackedWidget.h>
@@ -35,13 +29,13 @@ Pomodoro::Pomodoro():
   authWidget->setModel(std::move(authModel));
   authWidget->setRegistrationEnabled(true);
 
-  std::unique_ptr<WText> title(cpp14::make_unique<WText>("<h1>Pomodoro Lottery</h1>"));
+  std::unique_ptr<WText> title(cpp14::make_unique<WText>("<h1>Catland</h1>"));
   addWidget(std::move(title));
 
   addWidget(std::move(authWidget));
 
   mainStack_ = new WStackedWidget();
-  mainStack_->setStyleClass("gamestack");
+  mainStack_->setStyleClass("mainstack");
   addWidget(std::unique_ptr<WStackedWidget>(mainStack_));
 
   links_ = new WContainerWidget();
@@ -52,7 +46,7 @@ Pomodoro::Pomodoro():
   backToGameAnchor_ = links_->addWidget(cpp14::make_unique<WAnchor>("/play", "Gaming Grounds"));
   backToGameAnchor_->setLink(WLink(LinkType::InternalPath, "/play"));
 
-  scoresAnchor_ = links_->addWidget(cpp14::make_unique<WAnchor>("/History", "History"));
+  scoresAnchor_ = links_->addWidget(cpp14::make_unique<WAnchor>("/history", "History"));
   scoresAnchor_->setLink(WLink(LinkType::InternalPath, "/history"));
 
   WApplication::instance()->internalPathChanged()

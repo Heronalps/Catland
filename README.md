@@ -5,7 +5,7 @@
 mkdir build && cd ./build
 cmake ..
 make
-cd .. && ./build/src/catland.wt --docroot . --http-listen 0.0.0.0:8080
+cd .. && ./build/src/catland.wt --docroot ./src --http-listen 0.0.0.0:8080
 ```
 ## TODO
 
@@ -19,7 +19,7 @@ cd .. && ./build/src/catland.wt --docroot . --http-listen 0.0.0.0:8080
 
 - Loose password sequence requirement
 
-- Transfer Highscore to History
+- ~~Transfer Highscore to History~~
 
 - EC2 and endpoint
 

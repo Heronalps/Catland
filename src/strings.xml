@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <messages>
   <message id="Wt.Auth.login-form-info">
-    Pomodoro keeps track of the best players, and since that could be
-    you, you might want to register. <br/>
-    If you would rather not register for some reason, use the
-    <b>guest/guest</b> account.
+    Welcome to Catland. For the first-time visitor, feel free to register or
+    use the <b>guest</b> account.
   </message>
 
   <message id="history.info">
@@ -50,7 +48,7 @@
   <message id="Wt.Auth.confirmmail.body">
 Hello {1},
 
-Thank you for joining the Wt Pomodoro example!
+Thank you for joining Catland!
 
 Please click here to confirm your registration or copy and paste the
 following URL into your browser: (Note: be sure to copy the entire
@@ -60,13 +58,13 @@ URL, including any part of it which goes onto a second line.)
 
 Good luck in the game!
 
-The Wt team.
+The Catland team
   </message>
 
   <message id="Wt.Auth.confirmmail.htmlbody">
     <h3>Hello {1},</h3>
 
-    <p>Thank you for joining the Wt Pomodoro example!</p>
+    <p>Thank you for joining Catland!</p>
 
     <p>Please <a href="{3}">click here to confirm</a> your
     registration or copy and paste the following URL into your
@@ -75,9 +73,9 @@ The Wt team.
     
     <b>{3}</b>
 
-    <p>Good luck in the game!</p>
+    <p>Happy catlanding!</p>
 
-    <p>The Wt team.</p>
+    <p>The Catland team</p>
   </message>
 
   <message id="Wt.Auth.lostpasswordmail.subject">Lost password instructions</message>
@@ -101,7 +99,7 @@ a second line.)
 
 Your truly,
 
-The Wt team.
+The Catland team
   </message>
 
   <message id="Wt.Auth.lostpasswordmail.htmlbody">
@@ -125,7 +123,7 @@ The Wt team.
 
     <p>Yours truly,</p>
 
-    <p>The Wt team.</p>
+    <p>The Catland team</p>
   </message>
 
 </messages>

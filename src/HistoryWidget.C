@@ -1,9 +1,3 @@
-/*
- * Copyright (C) 2011 Emweb bv, Herent, Belgium
- *
- * See the LICENSE file for terms of use.
- */
-
 #include <Wt/WText.h>
 #include <Wt/WTable.h>
 #include <Wt/Dbo/Dbo.h>
