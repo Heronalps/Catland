@@ -5,8 +5,8 @@
  * See the LICENSE file for terms of use.
  */
 
-#ifndef HANGMANGAME_H_
-#define HANGMANGAME_H_
+#ifndef POMODORO_H_
+#define POMODORO_H_
 
 #include <Wt/WContainerWidget.h>
 
@@ -19,21 +19,21 @@ namespace Wt {
   class WAnchor;
 }
 
-class HangmanWidget;
-class HighScoresWidget;
+class PomodoroWidget;
+class HistoryWidget;
 class Session;
 
-class HangmanGame : public WContainerWidget
+class Pomodoro : public WContainerWidget
 {
 public:
-  HangmanGame();
+  Pomodoro();
 
   void handleInternalPath(const std::string &internalPath);
 
 private:
   WStackedWidget    *mainStack_;
-  HangmanWidget     *game_;
-  HighScoresWidget  *scores_;
+  PomodoroWidget    *game_;
+  HistoryWidget     *scores_;
   WContainerWidget  *links_;
   WAnchor           *backToGameAnchor_;
   WAnchor           *scoresAnchor_;
@@ -42,7 +42,7 @@ private:
 
   void onAuthEvent();
   void showGame();
-  void showHighScores();
+  void showHistory();
 };
 
-#endif //HANGMANGAME_H_
+#endif //POMODORO_H_

@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <messages>
   <message id="Wt.Auth.login-form-info">
-    Hangman keeps track of the best players, and since that could be
+    Pomodoro keeps track of the best players, and since that could be
     you, you might want to register. <br/>
     If you would rather not register for some reason, use the
     <b>guest/guest</b> account.
   </message>
 
-  <message id="highscore.info">
+  <message id="history.info">
     <p>
       For each game won, you gain 20 points, minus one point for each
       wrong letter guess. <br />
@@ -17,29 +17,29 @@
     </p>
   </message>
 
-  <message id="hangman.readyToPlay">
+  <message id="pomodoro.readyToPlay">
     <h2>Ready to play ?</h2>
   </message>
 
-  <message id="hangman.dutchWords">
+  <message id="pomodoro.dutchWords">
     Dutch words ({1} words)
   </message>
 
-  <message id="hangman.englishWords">
+  <message id="pomodoro.englishWords">
     English words ({1} words)
   </message>
 
-  <message id="hangman.newGame">New game</message>
+  <message id="pomodoro.newGame">New game</message>
 
-  <message id="hangman.guessTheWord">
+  <message id="pomodoro.guessTheWord">
     <h2>Guess the word, {1}!</h2>
   </message>
 
-  <message id="hangman.youHang">
+  <message id="pomodoro.youHang">
     You hang... <br />The correct answer was: {1}
   </message>
 
-  <message id="hangman.youWin">
+  <message id="pomodoro.youWin">
     You win!
   </message>
 
@@ -50,7 +50,7 @@
   <message id="Wt.Auth.confirmmail.body">
 Hello {1},
 
-Thank you for joining the Wt hangman example!
+Thank you for joining the Wt Pomodoro example!
 
 Please click here to confirm your registration or copy and paste the
 following URL into your browser: (Note: be sure to copy the entire
@@ -66,7 +66,7 @@ The Wt team.
   <message id="Wt.Auth.confirmmail.htmlbody">
     <h3>Hello {1},</h3>
 
-    <p>Thank you for joining the Wt hangman example!</p>
+    <p>Thank you for joining the Wt Pomodoro example!</p>
 
     <p>Please <a href="{3}">click here to confirm</a> your
     registration or copy and paste the following URL into your

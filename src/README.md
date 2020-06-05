@@ -1,7 +1,7 @@
-Hangman example
+Pomodoro Lottery
 ---------------
 
-This example implements a hangman game. This example is the subject of [the
+This example implements a Pomodoro tool. This example is the subject of [the
 Wt tutorial](http://www.webtoolkit.eu/wt/doc/tutorial/wt.html).
 
 How to run

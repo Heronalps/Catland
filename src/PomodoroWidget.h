@@ -5,8 +5,8 @@
  * See the LICENSE file for terms of use.
  */
 
-#ifndef HANGMAN_WIDGET_H_
-#define HANGMAN_WIDGET_H_
+#ifndef POMODORO_WIDGET_H_
+#define POMODORO_WIDGET_H_
 
 #include <vector>
 
@@ -17,10 +17,10 @@ class WordWidget;
 class ImagesWidget;
 class LettersWidget;
 
-class HangmanWidget: public Wt::WContainerWidget
+class PomodoroWidget: public Wt::WContainerWidget
 {
 public:
-  HangmanWidget(const std::string &name);
+  PomodoroWidget(const std::string &name);
 
   Wt::Signal<int>& scoreUpdated() { return scoreUpdated_; }
   
@@ -46,4 +46,4 @@ private:
   void newGame();
 };
 
-#endif //HANGMAN_WIDGET_H_
+#endif //POMODORO_WIDGET_H_

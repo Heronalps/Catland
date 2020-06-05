@@ -11,9 +11,9 @@ cd .. && ./build/src/catland.wt --docroot . --http-listen 0.0.0.0:8080
 
 ### Process
 
-- Move and compile codebase in Catland project
+- ~~Move and compile codebase in Catland project~~
 
-- Configure mysql and DBO on Mac
+- ~~Configure mysql and DBO on Mac~~
 
 - Catland and Pomodoro Font and icon
 

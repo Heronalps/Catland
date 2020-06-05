@@ -20,7 +20,7 @@ h1 {
     padding-right: 5px;
 }
 
-.highscores table {
+.history table {
     width: 60ex;
     margin-top: 20px;
     margin-bottom: 20px;
@@ -31,18 +31,18 @@ h1 {
     color: #333;
 }
 
-.highscores td, th {
+.history td, th {
     border-style: solid;
     border-width: 1px;
     border-color: #999;
     padding: 3px;
 }
 
-.highscores th {
+.history th {
     font-variant: small-caps;
 }
 
-.highscores tr#self {
+.history tr#self {
     font-style: italic;
     font-weight: bold;
     font-variant: normal;

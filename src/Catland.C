@@ -7,7 +7,7 @@
 #include <Wt/WApplication.h>
 #include <Wt/WServer.h>
 
-#include "HangmanGame.h"
+#include "Pomodoro.h"
 #include "Session.h"
 
 using namespace Wt;
@@ -16,14 +16,14 @@ std::unique_ptr<WApplication> createApplication(const WEnvironment& env)
 {
   auto app = cpp14::make_unique<WApplication>(env);
   
-  app->setTitle("Hangman");
+  app->setTitle("Catland Live");
 
   app->messageResourceBundle().use(app->appRoot() + "strings");
   app->messageResourceBundle().use(app->appRoot() + "templates");
 
-  app->useStyleSheet("css/hangman.css");
+  app->useStyleSheet("css/catland.css");
 
-  app->root()->addWidget(cpp14::make_unique<HangmanGame>());
+  app->root()->addWidget(cpp14::make_unique<Pomodoro>());
 
   return app;
 }

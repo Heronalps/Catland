@@ -10,15 +10,15 @@ SET(WTDBOSQLITE3_LIB Wt::DboSqlite3)
 SET(DBO_LIBS ${WTDBO_LIB} ${WTDBOSQLITE3_LIB}) 
 
 WT_ADD_FILE(${WT_PROJECT_TARGET}
-  hangman.C
+  Catland.C
   User.C
   Session.C
-  HangmanGame.C
-  HangmanWidget.C
+  Pomodoro.C
+  PomodoroWidget.C
   WordWidget.C
   LettersWidget.C
   ImagesWidget.C
-  HighScoresWidget.C
+  HistoryWidget.C
   Dictionary.C
 )
 
@@ -36,7 +36,7 @@ IF(NOT CRYPT_EXISTS)
 ENDIF(NOT CRYPT_EXISTS)
 
 IF(CRYPT_LIB_EXISTS)
-  TARGET_LINK_LIBRARIES(hangman.wt crypt)
+  TARGET_LINK_LIBRARIES(catland.wt crypt)
 ENDIF(CRYPT_LIB_EXISTS)
 
 INCLUDE_DIRECTORIES(/usr/local/include/Wt)

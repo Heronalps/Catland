@@ -14,10 +14,10 @@ using namespace Wt;
 
 class Session;
 
-class HighScoresWidget: public WContainerWidget
+class HistoryWidget: public WContainerWidget
 {
 public:
-  HighScoresWidget(Session *session);
+  HistoryWidget(Session *session);
   void update();
 
 private:

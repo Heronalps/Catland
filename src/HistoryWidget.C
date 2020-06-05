@@ -9,20 +9,20 @@
 #include <Wt/Dbo/Dbo.h>
 #include <Wt/WAny.h>
 
-#include "HighScoresWidget.h"
+#include "HistoryWidget.h"
 #include "Session.h"
 
 using namespace Wt;
 
-HighScoresWidget::HighScoresWidget(Session *session):
+HistoryWidget::HistoryWidget(Session *session):
   WContainerWidget(),
   session_(session)
 {
   setContentAlignment(AlignmentFlag::Center);
-  setStyleClass("highscores");
+  setStyleClass("history");
 }
 
-void HighScoresWidget::update()
+void HistoryWidget::update()
 {
   clear();
   
@@ -77,6 +77,6 @@ void HighScoresWidget::update()
       table->rowAt(row)->setId("self");
   }
 
-  WText *fineprint = this->addWidget(cpp14::make_unique<WText>(tr("highscore.info")));
+  WText *fineprint = this->addWidget(cpp14::make_unique<WText>(tr("history.info")));
   fineprint->addStyleClass("fineprint");
 }

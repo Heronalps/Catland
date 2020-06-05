@@ -13,16 +13,16 @@
 #include <Wt/Auth/AuthWidget.h>
 #include <Wt/Auth/RegistrationModel.h>
 
-#include "HangmanGame.h"
-#include "HangmanWidget.h"
-#include "HighScoresWidget.h"
+#include "Pomodoro.h"
+#include "PomodoroWidget.h"
+#include "HistoryWidget.h"
 
-HangmanGame::HangmanGame():
+Pomodoro::Pomodoro():
   WContainerWidget(),
   game_(0),
   scores_(0)
 {
-  session_.login().changed().connect(this, &HangmanGame::onAuthEvent);
+  session_.login().changed().connect(this, &Pomodoro::onAuthEvent);
 
   std::unique_ptr<Auth::AuthModel> authModel
       = cpp14::make_unique<Auth::AuthModel>(Session::auth(), session_.users());
@@ -35,7 +35,7 @@ HangmanGame::HangmanGame():
   authWidget->setModel(std::move(authModel));
   authWidget->setRegistrationEnabled(true);
 
-  std::unique_ptr<WText> title(cpp14::make_unique<WText>("<h1>A Witty game: Hangman</h1>"));
+  std::unique_ptr<WText> title(cpp14::make_unique<WText>("<h1>Pomodoro Lottery</h1>"));
   addWidget(std::move(title));
 
   addWidget(std::move(authWidget));
@@ -52,16 +52,16 @@ HangmanGame::HangmanGame():
   backToGameAnchor_ = links_->addWidget(cpp14::make_unique<WAnchor>("/play", "Gaming Grounds"));
   backToGameAnchor_->setLink(WLink(LinkType::InternalPath, "/play"));
 
-  scoresAnchor_ = links_->addWidget(cpp14::make_unique<WAnchor>("/highscores", "Highscores"));
-  scoresAnchor_->setLink(WLink(LinkType::InternalPath, "/highscores"));
+  scoresAnchor_ = links_->addWidget(cpp14::make_unique<WAnchor>("/History", "History"));
+  scoresAnchor_->setLink(WLink(LinkType::InternalPath, "/history"));
 
   WApplication::instance()->internalPathChanged()
-    .connect(this, &HangmanGame::handleInternalPath);
+    .connect(this, &Pomodoro::handleInternalPath);
 
   authWidgetPtr->processEnvironment();
 }
 
-void HangmanGame::onAuthEvent()
+void Pomodoro::onAuthEvent()
 {
   if (session_.login().loggedIn()) {  
     links_->show();
@@ -74,22 +74,22 @@ void HangmanGame::onAuthEvent()
   }
 }
 
-void HangmanGame::handleInternalPath(const std::string &internalPath)
+void Pomodoro::handleInternalPath(const std::string &internalPath)
 {
   if (session_.login().loggedIn()) {
     if (internalPath == "/play")
       showGame();
-    else if (internalPath == "/highscores")
-      showHighScores();
+    else if (internalPath == "/history")
+      showHistory();
     else
       WApplication::instance()->setInternalPath("/play",  true);
   }
 }
 
-void HangmanGame::showHighScores()
+void Pomodoro::showHistory()
 {
   if (!scores_)
-    scores_ = mainStack_->addWidget(cpp14::make_unique<HighScoresWidget>(&session_));
+    scores_ = mainStack_->addWidget(cpp14::make_unique<HistoryWidget>(&session_));
 
   mainStack_->setCurrentWidget(scores_);
   scores_->update();
@@ -98,10 +98,10 @@ void HangmanGame::showHighScores()
   scoresAnchor_->addStyleClass("selected-link");
 }
 
-void HangmanGame::showGame()
+void Pomodoro::showGame()
 {
   if (!game_) {
-    game_ = mainStack_->addWidget(cpp14::make_unique<HangmanWidget>(session_.userName()));
+    game_ = mainStack_->addWidget(cpp14::make_unique<PomodoroWidget>(session_.userName()));
     game_->scoreUpdated().connect(std::bind(&Session::addToScore,&session_,std::placeholders::_1));
   }
 

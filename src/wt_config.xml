@@ -19,10 +19,10 @@
 	    <!-- These configure the email address used to send emails
 	      -->
 	    <property name="auth-mail-sender-name">
-	      Wt Hangman Example
+	      Catland Pomodoro
 	    </property>
 	    <property name="auth-mail-sender-address">
-	      noreply-hangman@www.webtoolkit.eu
+	      ahourday@gmail.com
 	    </property>
 	</properties>
 	<progressive-bootstrap>true</progressive-bootstrap>

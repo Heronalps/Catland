@@ -74,7 +74,7 @@ class UnixCryptHashFunction : public Auth::HashFunction
 
 void Session::configureAuth()
 {
-  myAuthService.setAuthTokensEnabled(true, "hangmancookie");
+  myAuthService.setAuthTokensEnabled(true, "catlandcookie");
   myAuthService.setEmailVerificationEnabled(true);
 
   std::unique_ptr<Auth::PasswordVerifier> verifier
@@ -83,7 +83,7 @@ void Session::configureAuth()
 
 #ifdef HAVE_CRYPT
   // We want to still support users registered in the pre - Wt::Auth
-  // version of the hangman example
+  // version of the Pomodoro Lottery
   verifier->addHashFunction(cpp14::make_unique<UnixCryptHashFunction>());
 #endif
 
@@ -97,7 +97,7 @@ void Session::configureAuth()
 
 Session::Session()
 {
-  auto sqlite3 = cpp14::make_unique<Dbo::backend::Sqlite3>(WApplication::instance()->appRoot() + "hangman.db");
+  auto sqlite3 = cpp14::make_unique<Dbo::backend::Sqlite3>(WApplication::instance()->appRoot() + "catland.db");
   sqlite3->setProperty("show-queries", "true");
   session_.setConnection(std::move(sqlite3));
 

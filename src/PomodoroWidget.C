@@ -4,7 +4,7 @@
  * See the LICENSE file for terms of use.
  */
 
-#include "HangmanWidget.h"
+#include "PomodoroWidget.h"
 
 #include <Wt/WBreak.h>
 #include <Wt/WComboBox.h>
@@ -24,37 +24,37 @@ namespace {
   const int MaxGuesses = 9;
 }
 
-HangmanWidget::HangmanWidget(const std::string &name)
+PomodoroWidget::PomodoroWidget(const std::string &name)
   : WContainerWidget(),
     name_(name),
     badGuesses_(0)
 {
   setContentAlignment(AlignmentFlag::Center);
   
-  title_ = addWidget(cpp14::make_unique<WText>(tr("hangman.readyToPlay")));
+  title_ = addWidget(cpp14::make_unique<WText>(tr("Pomodoro.readyToPlay")));
 
   word_ = addWidget(cpp14::make_unique<WordWidget>());
   statusText_ = addWidget(cpp14::make_unique<WText>());
   images_ = addWidget(cpp14::make_unique<ImagesWidget>(MaxGuesses));
 
   letters_ = addWidget(cpp14::make_unique<LettersWidget>());
-  letters_->letterPushed().connect(this, &HangmanWidget::registerGuess);
+  letters_->letterPushed().connect(this, &PomodoroWidget::registerGuess);
 
   language_ = addWidget(cpp14::make_unique<WComboBox>());
-  language_->addItem(tr("hangman.englishWords").arg(18957));
-  language_->addItem(tr("hangman.dutchWords").arg(1688));
+  language_->addItem(tr("Pomodoro.englishWords").arg(18957));
+  language_->addItem(tr("Pomodoro.dutchWords").arg(1688));
 
   addWidget(cpp14::make_unique<WBreak>());
 
-  newGameButton_ = addWidget(cpp14::make_unique<WPushButton>(tr("hangman.newGame")));
-  newGameButton_->clicked().connect(this, &HangmanWidget::newGame);
+  newGameButton_ = addWidget(cpp14::make_unique<WPushButton>(tr("Pomodoro.newGame")));
+  newGameButton_->clicked().connect(this, &PomodoroWidget::newGame);
 
   letters_->hide();
 }
 
-void HangmanWidget::newGame()
+void PomodoroWidget::newGame()
 {
-  WString title(tr("hangman.guessTheWord"));
+  WString title(tr("Pomodoro.guessTheWord"));
   title_->setText(title.arg(name_));
 
   language_->hide();
@@ -71,7 +71,7 @@ void HangmanWidget::newGame()
   statusText_->setText("");
 }
 
-void HangmanWidget::registerGuess(char c)
+void PomodoroWidget::registerGuess(char c)
 {
   if (badGuesses_ < MaxGuesses) {
     bool correct = word_->guess(c);
@@ -83,7 +83,7 @@ void HangmanWidget::registerGuess(char c)
   }
 
   if (badGuesses_ == MaxGuesses) {
-    WString status = tr("hangman.youHang");
+    WString status = tr("Pomodoro.youHang");
     statusText_->setText(status.arg(word_->word()));
 
     letters_->hide();
@@ -92,7 +92,7 @@ void HangmanWidget::registerGuess(char c)
 
     scoreUpdated_.emit(-10);
   } else if (word_->won()) {
-    statusText_->setText(tr("hangman.youWin"));
+    statusText_->setText(tr("Pomodoro.youWin"));
     images_->showImage(ImagesWidget::HURRAY);
 
     letters_->hide();
