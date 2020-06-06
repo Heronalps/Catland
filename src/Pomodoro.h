@@ -28,10 +28,10 @@ private:
   PomodoroWidget    *game_;
   HistoryWidget     *scores_;
   WContainerWidget  *links_;
-  WAnchor           *backToGameAnchor_;
-  WAnchor           *scoresAnchor_;
-
-  Session session_;
+  WAnchor           *pomodoroAnchor_;
+  WAnchor           *historyAnchor_;
+  WImage            *logicPic_;
+  Session           session_;
 
   void onAuthEvent();
   void showGame();

@@ -32,8 +32,8 @@ Pomodoro::Pomodoro():
   std::unique_ptr<WText> title(cpp14::make_unique<WText>("<h1>Catland</h1>"));
   addWidget(std::move(title));
 
-  WImage *loginPic = addWidget(std::move(cpp14::make_unique<WImage>("icons/login.png")));
-  loginPic->setStyleClass("front");
+  logicPic_ = addWidget(std::move(cpp14::make_unique<WImage>("icons/login.png")));
+  logicPic_->setStyleClass("front");
 
   addWidget(std::move(authWidget));
 
@@ -46,11 +46,11 @@ Pomodoro::Pomodoro():
   links_->hide();
   addWidget(std::unique_ptr<WContainerWidget>(links_));
 
-  backToGameAnchor_ = links_->addWidget(cpp14::make_unique<WAnchor>("/pomodoro", "Pomodoro"));
-  backToGameAnchor_->setLink(WLink(LinkType::InternalPath, "/pomodoro"));
+  pomodoroAnchor_ = links_->addWidget(cpp14::make_unique<WAnchor>("/pomodoro", "Pomodoro"));
+  pomodoroAnchor_->setLink(WLink(LinkType::InternalPath, "/pomodoro"));
 
-  scoresAnchor_ = links_->addWidget(cpp14::make_unique<WAnchor>("/history", "History"));
-  scoresAnchor_->setLink(WLink(LinkType::InternalPath, "/history"));
+  historyAnchor_ = links_->addWidget(cpp14::make_unique<WAnchor>("/history", "History"));
+  historyAnchor_->setLink(WLink(LinkType::InternalPath, "/history"));
 
   WApplication::instance()->internalPathChanged()
     .connect(this, &Pomodoro::handleInternalPath);
@@ -62,12 +62,14 @@ void Pomodoro::onAuthEvent()
 {
   if (session_.login().loggedIn()) {  
     links_->show();
+    logicPic_->hide();
     handleInternalPath(WApplication::instance()->internalPath());
   } else {
     mainStack_->clear();
     game_ = 0;
     scores_ = 0;
     links_->hide();
+    logicPic_->show();
   }
 }
 
@@ -91,8 +93,8 @@ void Pomodoro::showHistory()
   mainStack_->setCurrentWidget(scores_);
   scores_->update();
 
-  backToGameAnchor_->removeStyleClass("selected-link");
-  scoresAnchor_->addStyleClass("selected-link");
+  pomodoroAnchor_->removeStyleClass("selected-link");
+  historyAnchor_->addStyleClass("selected-link");
 }
 
 void Pomodoro::showGame()
@@ -104,6 +106,6 @@ void Pomodoro::showGame()
 
   mainStack_->setCurrentWidget(game_);
 
-  backToGameAnchor_->addStyleClass("selected-link");
-  scoresAnchor_->removeStyleClass("selected-link");
+  pomodoroAnchor_->addStyleClass("selected-link");
+  historyAnchor_->removeStyleClass("selected-link");
 }
