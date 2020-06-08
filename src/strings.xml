@@ -10,13 +10,13 @@
       For each game won, you gain 20 points, minus one point for each
       wrong letter guess. <br />
 
-      For each game lost, you loose 10 points, so you better try hard
+      For each game lost, you lose 10 points, so you better try hard
       to guess the word!
     </p>
   </message>
 
-  <message id="pomodoro.readyToPlay">
-    <h2>Ready to play ?</h2>
+  <message id="pomodoro.lottery">
+    <h2>Pomodoro Lottery</h2>
   </message>
 
   <message id="pomodoro.dutchWords">

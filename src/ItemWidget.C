@@ -1,34 +1,34 @@
-#include "WordWidget.h"
+#include "ItemWidget.h"
 
 #include <Wt/WText.h>
 
 using namespace Wt;
 
-WordWidget::WordWidget() :
+ItemWidget::ItemWidget() :
   WContainerWidget()
 {
-  addStyleClass("wordcontainer");
+  addStyleClass("itemcontainer");
 }
 
-void WordWidget::init(const std::wstring &word)
+void ItemWidget::init(const std::wstring &word)
 {
-  word_ = word;
+  item_ = word;
   displayedLetters_ = 0;
 
   clear();
   wordLetters_.clear();
-  for(unsigned int i = 0; i < word_.size(); ++i) {
+  for(unsigned int i = 0; i < item_.size(); ++i) {
     WText *c = this->addWidget(cpp14::make_unique<WText>("-"));
     wordLetters_.push_back(c);
   }
 }
 
-bool WordWidget::guess(wchar_t c)
+bool ItemWidget::guess(wchar_t c)
 {
   bool correct = false;
 
-  for(unsigned int i = 0; i < word_.size(); ++i) {
-    if(word_[i] == c) {
+  for(unsigned int i = 0; i < item_.size(); ++i) {
+    if(item_[i] == c) {
       displayedLetters_++;
       wordLetters_[i]->setText(std::wstring(1, c));
       correct = true;
@@ -38,7 +38,7 @@ bool WordWidget::guess(wchar_t c)
   return correct;
 }
 
-bool WordWidget::won()
+bool ItemWidget::won()
 {
-  return displayedLetters_ == word_.size();
+  return displayedLetters_ == item_.size();
 }

@@ -25,7 +25,8 @@ public:
 
 private:
   WStackedWidget    *mainStack_;
-  PomodoroWidget    *game_;
+  WText             *title_;
+  PomodoroWidget    *pomodoro_;
   HistoryWidget     *scores_;
   WContainerWidget  *links_;
   WAnchor           *pomodoroAnchor_;
@@ -34,7 +35,7 @@ private:
   Session           session_;
 
   void onAuthEvent();
-  void showGame();
+  void showPomodoro();
   void showHistory();
 };
 

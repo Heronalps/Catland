@@ -13,7 +13,7 @@
 
 Pomodoro::Pomodoro():
   WContainerWidget(),
-  game_(0),
+  pomodoro_(0),
   scores_(0)
 {
   session_.login().changed().connect(this, &Pomodoro::onAuthEvent);
@@ -29,8 +29,7 @@ Pomodoro::Pomodoro():
   authWidget->setModel(std::move(authModel));
   authWidget->setRegistrationEnabled(true);
 
-  std::unique_ptr<WText> title(cpp14::make_unique<WText>("<h1>Catland</h1>"));
-  addWidget(std::move(title));
+  title_ = addWidget(std::move(cpp14::make_unique<WText>("<h1>Catland</h1>")));
 
   logicPic_ = addWidget(std::move(cpp14::make_unique<WImage>("icons/login.png")));
   logicPic_->setStyleClass("front");
@@ -63,13 +62,15 @@ void Pomodoro::onAuthEvent()
   if (session_.login().loggedIn()) {  
     links_->show();
     logicPic_->hide();
+    title_->hide();
     handleInternalPath(WApplication::instance()->internalPath());
   } else {
     mainStack_->clear();
-    game_ = 0;
+    pomodoro_ = 0;
     scores_ = 0;
     links_->hide();
     logicPic_->show();
+    title_->show();
   }
 }
 
@@ -77,7 +78,7 @@ void Pomodoro::handleInternalPath(const std::string &internalPath)
 {
   if (session_.login().loggedIn()) {
     if (internalPath == "/pomodoro")
-      showGame();
+      showPomodoro();
     else if (internalPath == "/history")
       showHistory();
     else
@@ -97,14 +98,14 @@ void Pomodoro::showHistory()
   historyAnchor_->addStyleClass("selected-link");
 }
 
-void Pomodoro::showGame()
+void Pomodoro::showPomodoro()
 {
-  if (!game_) {
-    game_ = mainStack_->addWidget(cpp14::make_unique<PomodoroWidget>(session_.userName()));
-    game_->scoreUpdated().connect(std::bind(&Session::addToScore,&session_,std::placeholders::_1));
+  if (!pomodoro_) {
+    pomodoro_ = mainStack_->addWidget(cpp14::make_unique<PomodoroWidget>(session_.userName()));
+    pomodoro_->scoreUpdated().connect(std::bind(&Session::addToScore,&session_,std::placeholders::_1));
   }
 
-  mainStack_->setCurrentWidget(game_);
+  mainStack_->setCurrentWidget(pomodoro_);
 
   pomodoroAnchor_->addStyleClass("selected-link");
   historyAnchor_->removeStyleClass("selected-link");

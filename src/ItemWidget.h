@@ -5,12 +5,13 @@
 
 using namespace Wt;
 
-class WordWidget : public WContainerWidget
+class ItemWidget : public WContainerWidget
 {
 public:
-  WordWidget();
+  ItemWidget();
 
-  std::wstring word() const { return word_; } 
+  std::wstring item() const { return item_; } 
+  int count() const { return count_; } 
 
   void init(const std::wstring &word);
   bool guess(wchar_t c);
@@ -19,7 +20,8 @@ public:
 
 private:
   std::vector<WText *>           wordLetters_;
-  std::wstring                   word_;
+  std::wstring                   item_;
+  int                            count_;
 
   unsigned                       displayedLetters_;
 };

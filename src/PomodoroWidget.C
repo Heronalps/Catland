@@ -8,7 +8,7 @@
 
 #include "Session.h"
 #include "Dictionary.h"
-#include "WordWidget.h"
+#include "ItemWidget.h"
 #include "ImagesWidget.h"
 #include "LettersWidget.h"
 
@@ -25,9 +25,9 @@ PomodoroWidget::PomodoroWidget(const std::string &name)
 {
   setContentAlignment(AlignmentFlag::Center);
   
-  title_ = addWidget(cpp14::make_unique<WText>(tr("pomodoro.readyToPlay")));
+  title_ = addWidget(cpp14::make_unique<WText>(tr("pomodoro.lottery")));
 
-  word_ = addWidget(cpp14::make_unique<WordWidget>());
+  word_ = addWidget(cpp14::make_unique<ItemWidget>());
   statusText_ = addWidget(cpp14::make_unique<WText>());
   images_ = addWidget(cpp14::make_unique<ImagesWidget>(MaxGuesses));
 
@@ -48,7 +48,7 @@ PomodoroWidget::PomodoroWidget(const std::string &name)
 
 void PomodoroWidget::newGame()
 {
-  WString title(tr("Pomodoro.guessTheWord"));
+  WString title(tr("pomodoro.guessTheWord"));
   title_->setText(title.arg(name_));
 
   language_->hide();
@@ -77,8 +77,8 @@ void PomodoroWidget::registerGuess(char c)
   }
 
   if (badGuesses_ == MaxGuesses) {
-    WString status = tr("Pomodoro.youHang");
-    statusText_->setText(status.arg(word_->word()));
+    WString status = tr("pomodoro.youHang");
+    statusText_->setText(status.arg(word_->item()));
 
     letters_->hide();
     language_->show();
@@ -86,7 +86,7 @@ void PomodoroWidget::registerGuess(char c)
 
     scoreUpdated_.emit(-10);
   } else if (word_->won()) {
-    statusText_->setText(tr("Pomodoro.youWin"));
+    statusText_->setText(tr("pomodoro.youWin"));
     images_->showImage(ImagesWidget::HURRAY);
 
     letters_->hide();

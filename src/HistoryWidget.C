@@ -20,7 +20,7 @@ void HistoryWidget::update()
 {
   clear();
   
-  this->addWidget(cpp14::make_unique<WText>("<h2>Hall of fame</h2>"));
+  this->addWidget(cpp14::make_unique<WText>("<h2>Lottery History</h2>"));
   
   int ranking = session_->findRanking();
   

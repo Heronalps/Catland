@@ -15,7 +15,7 @@ h1 {
     display: block;
     margin-left: auto;
     margin-right: auto;
-    width: 50%;
+    width: 40%;
 }
 
 .links {
@@ -64,7 +64,7 @@ h1 {
     font-size: large;
 }
 
-.wordcontainer {
+.itemcontainer {
     top-margin: 20px;
     bottom-margin: 20px;
 

@@ -6,7 +6,7 @@
 #include <Wt/WContainerWidget.h>
 
 class Session;
-class WordWidget;
+class ItemWidget;
 class ImagesWidget;
 class LettersWidget;
 
@@ -20,7 +20,7 @@ public:
 private:
   Wt::WText                 *title_;
 
-  WordWidget                *word_;
+  ItemWidget                *word_;
   ImagesWidget              *images_;
   LettersWidget             *letters_;
 

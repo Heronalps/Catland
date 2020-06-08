@@ -15,7 +15,7 @@ WT_ADD_FILE(${WT_PROJECT_TARGET}
   Session.C
   Pomodoro.C
   PomodoroWidget.C
-  WordWidget.C
+  ItemWidget.C
   LettersWidget.C
   ImagesWidget.C
   HistoryWidget.C
