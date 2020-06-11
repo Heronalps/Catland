@@ -31,7 +31,7 @@ public:
   void init();
 
 private:
-  WTable*                        table_;
+  WTable                        *table_;
   std::vector<Item*>             items_;
 };
 

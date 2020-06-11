@@ -6,8 +6,10 @@ ItemWidget::ItemWidget() : WContainerWidget(){}
 
 void ItemWidget::init() 
 {
+  this->clear();
   auto tablePtr = cpp14::make_unique<WTable>();
   table_ = tablePtr.get();
+  
   table_->setHeaderCount(1);
   table_->setWidth(Wt::WLength("100%"));
 
@@ -23,7 +25,6 @@ void ItemWidget::init()
 
 void ItemWidget::reload() 
 {
-  this->clear();
   init();
   for (auto item : items_) {
     addToTable(item);

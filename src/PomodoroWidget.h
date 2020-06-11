@@ -25,7 +25,7 @@ private:
   LettersWidget             *letters_;
 
   Wt::WText                 *statusText_;
-  Wt::WComboBox             *language_;
+  
   Wt::WPushButton           *newGameButton_;
 
   Wt::Signal<int>            scoreUpdated_;

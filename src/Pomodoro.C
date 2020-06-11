@@ -17,7 +17,7 @@ Pomodoro::Pomodoro():
   scores_(0)
 {
   session_.login().changed().connect(this, &Pomodoro::onAuthEvent);
-
+  
   std::unique_ptr<Auth::AuthModel> authModel
       = cpp14::make_unique<Auth::AuthModel>(Session::auth(), session_.users());
   authModel->addPasswordAuth(&Session::passwordAuth());
@@ -45,11 +45,11 @@ Pomodoro::Pomodoro():
   links_->hide();
   addWidget(std::unique_ptr<WContainerWidget>(links_));
 
-  pomodoroAnchor_ = links_->addWidget(cpp14::make_unique<WAnchor>("/pomodoro", "Pomodoro"));
-  pomodoroAnchor_->setLink(WLink(LinkType::InternalPath, "/pomodoro"));
+  // pomodoroAnchor_ = links_->addWidget(cpp14::make_unique<WAnchor>("/pomodoro", "Pomodoro"));
+  // pomodoroAnchor_->setLink(WLink(LinkType::InternalPath, "/pomodoro"));
 
-  historyAnchor_ = links_->addWidget(cpp14::make_unique<WAnchor>("/history", "History"));
-  historyAnchor_->setLink(WLink(LinkType::InternalPath, "/history"));
+  // historyAnchor_ = links_->addWidget(cpp14::make_unique<WAnchor>("/history", "History"));
+  // historyAnchor_->setLink(WLink(LinkType::InternalPath, "/history"));
 
   WApplication::instance()->internalPathChanged()
     .connect(this, &Pomodoro::handleInternalPath);
