@@ -15,7 +15,7 @@ void ItemWidget::init()
 
   table_->elementAt(0, 0)->addWidget(cpp14::make_unique<WText>("#"));
   table_->elementAt(0, 1)->addWidget(cpp14::make_unique<WText>("Item"));
-  table_->elementAt(0, 2)->addWidget(cpp14::make_unique<WText>("Count"));
+  table_->elementAt(0, 2)->addWidget(cpp14::make_unique<WText>("Comment"));
 
   this->addWidget(std::move(tablePtr));
   table_->toggleStyleClass("table-bordered", true);
@@ -35,7 +35,7 @@ void ItemWidget::addToTable(Item* item)
 {
   table_->elementAt(item->seq(),0)->addWidget(cpp14::make_unique<WText>(WString("{1}").arg(item->seq())));
   table_->elementAt(item->seq(),1)->addWidget(cpp14::make_unique<WText>(item->entry()));
-  table_->elementAt(item->seq(),2)->addWidget(cpp14::make_unique<WText>(WString("{1}").arg(item->count())));
+  table_->elementAt(item->seq(),2)->addWidget(cpp14::make_unique<WText>(WString("{1}").arg(item->comment())));
 }
 
 

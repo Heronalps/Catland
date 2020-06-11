@@ -107,6 +107,6 @@ void Pomodoro::showPomodoro()
 
   mainStack_->setCurrentWidget(pomodoro_);
 
-  pomodoroAnchor_->addStyleClass("selected-link");
-  historyAnchor_->removeStyleClass("selected-link");
+  // pomodoroAnchor_->addStyleClass("selected-link");
+  // historyAnchor_->removeStyleClass("selected-link");
 }

@@ -6,14 +6,14 @@
 class Item 
 {
 public:
-    Item(int seq, int count, std::wstring entry);
+    Item(int seq, std::wstring comment, std::wstring entry);
 
     std::wstring entry() const { return entry_; } 
-    int count() const { return count_; } 
+    std::wstring comment() const { return comment_; } 
     int seq() const { return seq_; }
 private:
-    int           seq_;
-    int           count_;
+    int            seq_;
+    std::wstring   comment_;
     std::wstring   entry_;
 };
 

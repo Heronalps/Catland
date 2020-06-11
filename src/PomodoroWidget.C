@@ -57,7 +57,7 @@ void PomodoroWidget::newGame()
 
 void PomodoroWidget::registerGuess(char c)
 {
-  auto item = new Item(ItemSeq, 456, widen("Michael"));
+  auto item = new Item(ItemSeq, widen("Comment! Comment!"), widen("Michael"));
   itemWidget_->addItem(item);
   ItemSeq++;
 }

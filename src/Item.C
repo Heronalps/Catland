@@ -1,8 +1,8 @@
 #include "Item.h"
 
-Item::Item(int seq, int count, std::wstring entry) 
+Item::Item(int seq, std::wstring comment, std::wstring entry) 
 {
     seq_ = seq;
-    count_ = count;
+    comment_ = comment;
     entry_ = entry;
 }
