@@ -59,6 +59,8 @@ void Pomodoro::onAuthEvent()
     handleInternalPath(WApplication::instance()->internalPath());
   } else {
     mainStack_->clear();
+    pomodoro_ = 0;	
+    scores_ = 0;
     links_->hide();
     logicPic_->show();
     title_->show();
