@@ -29,8 +29,8 @@
 
   <message id="pomodoro.newGame">New game</message>
 
-  <message id="pomodoro.guessTheWord">
-    <h2>Guess the word, {1}!</h2>
+  <message id="pomodoro.feelingLuck">
+    <h2> Feeling lucky, {1}?</h2>
   </message>
 
   <message id="pomodoro.youHang">

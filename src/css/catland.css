@@ -65,8 +65,8 @@ h1 {
 }
 
 .itemcontainer {
-    top-margin: 20px;
-    bottom-margin: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
 
     border-style: solid;
     font-family: courier, Monospace;
@@ -82,4 +82,33 @@ h1 {
     right: 0px;
     top: 0px;
     font-size: 90%;
+}
+
+.yellow-box {
+    background-color: #ffffb4;
+    border: 3px solid green;
+    margin-top: 1ex;
+    margin-bottom: 1ex;
+}
+
+.green-box {
+    background-color: #c4ffb4;
+    min-height: 30px;
+    padding: 70px 0;
+    text-align: center;
+    padding: 3px;
+}
+
+.blue-box {
+    background-color: #6495ED;
+    min-height: 30px;
+    text-align: center;
+    padding: 3px;
+}
+
+.coral-box {
+    background-color: #FF7F50;
+    min-height: 30px;
+    text-align: center;
+    padding: 3px;
 }

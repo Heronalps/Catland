@@ -20,6 +20,7 @@ WT_ADD_FILE(${WT_PROJECT_TARGET}
   ImagesWidget.C
   HistoryWidget.C
   Dictionary.C
+  Item.C
 )
 
 TARGET_LINK_LIBRARIES(${WT_PROJECT_TARGET} ${WT_LIB} ${CONNECTOR} ${DBO_LIBS})

@@ -20,7 +20,7 @@ public:
 private:
   Wt::WText                 *title_;
 
-  ItemWidget                *word_;
+  ItemWidget                *itemWidget_;
   ImagesWidget              *images_;
   LettersWidget             *letters_;
 
