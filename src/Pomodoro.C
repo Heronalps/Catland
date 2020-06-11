@@ -45,12 +45,6 @@ Pomodoro::Pomodoro():
   links_->hide();
   addWidget(std::unique_ptr<WContainerWidget>(links_));
 
-  // pomodoroAnchor_ = links_->addWidget(cpp14::make_unique<WAnchor>("/pomodoro", "Pomodoro"));
-  // pomodoroAnchor_->setLink(WLink(LinkType::InternalPath, "/pomodoro"));
-
-  // historyAnchor_ = links_->addWidget(cpp14::make_unique<WAnchor>("/history", "History"));
-  // historyAnchor_->setLink(WLink(LinkType::InternalPath, "/history"));
-
   WApplication::instance()->internalPathChanged()
     .connect(this, &Pomodoro::handleInternalPath);
 
@@ -60,14 +54,11 @@ Pomodoro::Pomodoro():
 void Pomodoro::onAuthEvent()
 {
   if (session_.login().loggedIn()) {  
-    links_->show();
     logicPic_->hide();
     title_->hide();
     handleInternalPath(WApplication::instance()->internalPath());
   } else {
     mainStack_->clear();
-    pomodoro_ = 0;
-    scores_ = 0;
     links_->hide();
     logicPic_->show();
     title_->show();
@@ -106,7 +97,4 @@ void Pomodoro::showPomodoro()
   }
 
   mainStack_->setCurrentWidget(pomodoro_);
-
-  // pomodoroAnchor_->addStyleClass("selected-link");
-  // historyAnchor_->removeStyleClass("selected-link");
 }

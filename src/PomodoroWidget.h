@@ -2,6 +2,8 @@
 #define POMODORO_WIDGET_H_
 
 #include <vector>
+#include <random>
+#include <iostream>
 
 #include <Wt/WContainerWidget.h>
 
@@ -26,7 +28,7 @@ private:
 
   Wt::WText                 *statusText_;
   
-  Wt::WPushButton           *newGameButton_;
+  Wt::WPushButton           *feelingLuckyButton_;
 
   Wt::Signal<int>            scoreUpdated_;
 
@@ -36,7 +38,7 @@ private:
   
   void registerGuess(char c);
 
-  void newGame();
+  void draw();
 };
 
 #endif //POMODORO_WIDGET_H_

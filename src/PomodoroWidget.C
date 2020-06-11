@@ -17,8 +17,12 @@
 using namespace Wt;
 
 namespace {
-  const int MaxGuesses = 9;
+  static int RandomGuess = 0;
+  const int PicNumber = 9;
   static int ItemSeq = 1;
+  std::random_device rd;
+  std::mt19937 gen(rd());
+  std::uniform_int_distribution<> distrib(1, 8);
 }
 
 PomodoroWidget::PomodoroWidget(const std::string &name)
@@ -32,32 +36,29 @@ PomodoroWidget::PomodoroWidget(const std::string &name)
 
   itemWidget_ = addWidget(cpp14::make_unique<ItemWidget>());
   statusText_ = addWidget(cpp14::make_unique<WText>());
-  images_ = addWidget(cpp14::make_unique<ImagesWidget>(MaxGuesses));
+  images_ = addWidget(cpp14::make_unique<ImagesWidget>(PicNumber));
 
   letters_ = addWidget(cpp14::make_unique<LettersWidget>());
   letters_->letterPushed().connect(this, &PomodoroWidget::registerGuess);
 
   addWidget(cpp14::make_unique<WBreak>());
 
-  newGameButton_ = addWidget(cpp14::make_unique<WPushButton>(tr("pomodoro.newGame")));
-  newGameButton_->clicked().connect(this, &PomodoroWidget::newGame);
+  feelingLuckyButton_ = addWidget(cpp14::make_unique<WPushButton>(tr("pomodoro.feelingLucky")));
+  feelingLuckyButton_->clicked().connect(this, &PomodoroWidget::draw);
 }
 
-void PomodoroWidget::newGame()
+void PomodoroWidget::draw()
 {
-  WString title(tr("pomodoro.feelingLuck"));
+  WString title(tr("pomodoro.enjoyBreak"));
   title_->setText(title.arg(name_));
-
-  // language_->hide();
-  newGameButton_->hide();
-  badGuesses_ = 0;
-  images_->showImage(badGuesses_);
+  RandomGuess = distrib(gen);
+  images_->showImage(RandomGuess);
   statusText_->setText("");
 }
 
 void PomodoroWidget::registerGuess(char c)
 {
-  auto item = new Item(ItemSeq, widen("Comment! Comment!"), widen("Michael"));
+  auto item = new Item(ItemSeq, widen("Michael"), widen("Comment! Comment!"));
   itemWidget_->addItem(item);
   ItemSeq++;
 }

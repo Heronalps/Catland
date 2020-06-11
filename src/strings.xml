@@ -27,10 +27,10 @@
     English words ({1} words)
   </message>
 
-  <message id="pomodoro.newGame">New game</message>
+  <message id="pomodoro.feelingLucky">I'm feeling lucky</message>
 
-  <message id="pomodoro.feelingLuck">
-    <h2> Feeling lucky, {1}?</h2>
+  <message id="pomodoro.enjoyBreak">
+    <h2> Enjoy your break, {1}?</h2>
   </message>
 
   <message id="pomodoro.youHang">
