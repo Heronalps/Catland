@@ -8,23 +8,25 @@ const int ImagesWidget::HURRAY = -1;
 ImagesWidget::ImagesWidget(int maxGuesses)
 {
   for (int i = 0; i <= maxGuesses; ++i) {
-    std::string fname = "icons/hangman";
+    std::string fname = "icons/item";
     fname += std::to_string(i) + ".jpg";
     WImage *theImage = addWidget(cpp14::make_unique<WImage>(fname));
     images_.push_back(theImage);
 
     // Although not necessary, we can avoid flicker (on konqueror)
     // by presetting the image size.
-    theImage->resize(256, 256);
+    theImage->resize(512, 512);
     theImage->hide();
   }
 
-  WImage *hurray = addWidget(cpp14::make_unique<WImage>("icons/hangmanhurray.jpg"));
+  WImage *hurray = addWidget(cpp14::make_unique<WImage>("icons/hurray.jpg"));
+  hurray->resize(512, 512);
   hurray->hide();
   images_.push_back(hurray);
+  std::cout << images_.size() << std::endl;
 
   image_ = 0;
-  showImage(maxGuesses);
+  showImage(HURRAY);
 }
 
 void ImagesWidget::showImage(int index)

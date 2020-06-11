@@ -30,7 +30,7 @@
   <message id="pomodoro.feelingLucky">I'm feeling lucky</message>
 
   <message id="pomodoro.enjoyBreak">
-    <h2> Enjoy your break, {1}?</h2>
+    <h2> Enjoy your break, {1}!</h2>
   </message>
 
   <message id="pomodoro.youHang">

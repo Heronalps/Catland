@@ -18,11 +18,20 @@ using namespace Wt;
 
 namespace {
   static int RandomGuess = 0;
-  const int PicNumber = 9;
+  const int PicNumber = 25;
   static int ItemSeq = 1;
-  std::random_device rd;
-  std::mt19937 gen(rd());
-  std::uniform_int_distribution<> distrib(1, 8);
+
+  static std::vector<std::string> itemMap({"Aerobics", "Benching", "Cartoon", "Dance", "Eat", "Family Game", 
+  "Video Game", "Hacker News", "Ice Breaker", "Juggling", "Karaoke", "Laugh", "Music", "Netflix", 
+  "Occulus", "Play instrument", "Barbeque", "Run a mile", "Snacks", "Tik Tok", "Find UFO", "TV", "Walk", 
+  "Crossfit", "Dash a yard", "Zoom Call a friend"});
+  
+  static std::vector<std::string> commentMap({"Aerobics", "Benching", "Cartoon", "Dance", "Eat", "Family Game", 
+  "Video Game", "Hackers New", "Ice Breaker", "Juggling", "Karaoke", "Laugh", "Music", "Netflix", 
+  "Occulus", "Play instrument", "Barbeque", "Run a mile", "Snacks", "Tik Tok", "Find UFO", "TV", "Walk", 
+  "Crossfit", "Dash a yard", "Zoom Call a friend"});
+
+  std::vector<int> selectedItem{};
 }
 
 PomodoroWidget::PomodoroWidget(const std::string &name)
@@ -51,14 +60,20 @@ void PomodoroWidget::draw()
 {
   WString title(tr("pomodoro.enjoyBreak"));
   title_->setText(title.arg(name_));
+
+  std::random_device rd;
+  std::mt19937 gen(rd());
+  std::uniform_int_distribution<> distrib(0, selectedItem.size() - 1);
+  
   RandomGuess = distrib(gen);
-  images_->showImage(RandomGuess);
+  images_->showImage(selectedItem[RandomGuess]);
   statusText_->setText("");
 }
 
 void PomodoroWidget::registerGuess(char c)
 {
-  auto item = new Item(ItemSeq, widen("Michael"), widen("Comment! Comment!"));
+  selectedItem.push_back(c - 'A');
+  auto item = new Item(ItemSeq, widen(itemMap[c - 'A']), widen(commentMap[c - 'A']));
   itemWidget_->addItem(item);
   ItemSeq++;
 }
