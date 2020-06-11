@@ -60,8 +60,8 @@ void PomodoroWidget::newGame()
    * Choose a new secret word and reset the game
    */
   Dictionary dictionary = (Dictionary) language_->currentIndex();
-  // auto item = new Item(123, 456, widen("Michael"));
-  // itemWidget_->addItem(item);
+  auto item = new Item(123, 456, widen("Michael"));
+  itemWidget_->addItem(item);
   letters_->reset();
   badGuesses_ = 0;
   images_->showImage(badGuesses_);

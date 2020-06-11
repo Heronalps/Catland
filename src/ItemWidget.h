@@ -1,7 +1,17 @@
-#ifndef WORD_WIDGET_H_
-#define WORD_WIDGET_H_
+#ifndef ITEM_WIDGET_H_
+#define ITEM_WIDGET_H_
+
+#include "Item.h"
 
 #include <Wt/WContainerWidget.h>
+#include <Wt/WTable.h>
+#include <Wt/WTableCell.h>
+#include <Wt/WLineEdit.h>
+#include <Wt/WText.h>
+#include <Wt/WCheckBox.h>
+
+
+#include <memory>
 
 using namespace Wt;
 
@@ -10,20 +20,19 @@ class ItemWidget : public WContainerWidget
 public:
   ItemWidget();
 
-  std::wstring item() const { return item_; } 
-  int count() const { return count_; } 
+  void addToTable(Item* item);
 
-  void init(const std::wstring &word);
-  bool guess(wchar_t c);
+  void addItem(Item* item);
 
-  bool won();
+  void deleteItem(Item* item);
+
+  void reload();
+  
+  void init();
 
 private:
-  std::vector<WText *>           wordLetters_;
-  std::wstring                   item_;
-  int                            count_;
-
-  unsigned                       displayedLetters_;
+  WTable*                        table_;
+  std::vector<Item*>             items_;
 };
 
-#endif //WORD_WIDGET_H_
+#endif //ITEM_WIDGET_H_

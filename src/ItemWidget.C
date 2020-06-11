@@ -1,44 +1,51 @@
 #include "ItemWidget.h"
 
-#include <Wt/WText.h>
-
 using namespace Wt;
 
-ItemWidget::ItemWidget() :
-  WContainerWidget()
+ItemWidget::ItemWidget() : WContainerWidget(){}
+
+void ItemWidget::init() 
 {
-  addStyleClass("itemcontainer");
+  auto tablePtr = cpp14::make_unique<WTable>();
+  table_ = tablePtr.get();
+  table_->setHeaderCount(1);
+  table_->setWidth(Wt::WLength("100%"));
+
+  table_->elementAt(0, 0)->addWidget(cpp14::make_unique<WText>("#"));
+  table_->elementAt(0, 1)->addWidget(cpp14::make_unique<WText>("Item"));
+  table_->elementAt(0, 2)->addWidget(cpp14::make_unique<WText>("Count"));
+
+  this->addWidget(std::move(tablePtr));
+  table_->toggleStyleClass("table-bordered", true);
+  table_->toggleStyleClass("table-hover", true);
+  table_->toggleStyleClass("table-striped", true);
 }
 
-void ItemWidget::init(const std::wstring &word)
+void ItemWidget::reload() 
 {
-  item_ = word;
-  displayedLetters_ = 0;
-
-  clear();
-  wordLetters_.clear();
-  for(unsigned int i = 0; i < item_.size(); ++i) {
-    WText *c = this->addWidget(cpp14::make_unique<WText>("-"));
-    wordLetters_.push_back(c);
+  this->clear();
+  init();
+  for (auto item : items_) {
+    addToTable(item);
   }
 }
 
-bool ItemWidget::guess(wchar_t c)
+void ItemWidget::addToTable(Item* item)
 {
-  bool correct = false;
-
-  for(unsigned int i = 0; i < item_.size(); ++i) {
-    if(item_[i] == c) {
-      displayedLetters_++;
-      wordLetters_[i]->setText(std::wstring(1, c));
-      correct = true;
-    }
-  }
-
-  return correct;
+  table_->elementAt(item->seq(),0)->addWidget(cpp14::make_unique<WText>(WString("{1}").arg(item->seq())));
+  table_->elementAt(item->seq(),1)->addWidget(cpp14::make_unique<WText>(item->entry()));
+  table_->elementAt(item->seq(),2)->addWidget(cpp14::make_unique<WText>(WString("{1}").arg(item->count())));
 }
 
-bool ItemWidget::won()
+
+void ItemWidget::addItem(Item* item) 
 {
-  return displayedLetters_ == item_.size();
+  items_.push_back(item);
+  reload();
+}
+
+void ItemWidget::deleteItem(Item* item)
+{
+  items_.pop_back();
+  reload();
 }

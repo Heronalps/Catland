@@ -1,4 +1,5 @@
 #include <Wt/WApplication.h>
+#include <Wt/WBootstrapTheme.h>
 #include <Wt/WServer.h>
 
 #include "Pomodoro.h"
@@ -9,6 +10,10 @@ using namespace Wt;
 std::unique_ptr<WApplication> createApplication(const WEnvironment& env)
 {
   auto app = cpp14::make_unique<WApplication>(env);
+  auto bootstrapTheme = std::make_shared<WBootstrapTheme>();
+  bootstrapTheme->setVersion(BootstrapVersion::v2);
+  bootstrapTheme->setResponsive(true);
+  app->setTheme(bootstrapTheme);
   
   app->setTitle("Catland");
 
