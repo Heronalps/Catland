@@ -30,6 +30,8 @@ public:
   
   void init();
 
+  void clearTable();
+
 private:
   WTable                        *table_;
   std::vector<Item*>             items_;

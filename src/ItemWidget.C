@@ -39,7 +39,6 @@ void ItemWidget::addToTable(Item* item)
   table_->elementAt(item->seq(),2)->addWidget(cpp14::make_unique<WText>(WString("{1}").arg(item->comment())));
 }
 
-
 void ItemWidget::addItem(Item* item) 
 {
   items_.push_back(item);
@@ -50,4 +49,10 @@ void ItemWidget::deleteItem(Item* item)
 {
   items_.pop_back();
   reload();
+}
+
+void ItemWidget::clearTable() 
+{
+  table_->clear();
+  items_.clear();
 }

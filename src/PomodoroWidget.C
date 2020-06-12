@@ -65,6 +65,9 @@ PomodoroWidget::PomodoroWidget(const std::string &name)
 
 void PomodoroWidget::draw()
 {
+  if (selectedItem.empty()) {
+    return;
+  }
   WString title(tr("pomodoro.enjoyBreak"));
   title_->setText(title.arg(name_));
 
@@ -74,13 +77,18 @@ void PomodoroWidget::draw()
   
   RandomGuess = distrib(gen);
   images_->showImage(selectedItem[RandomGuess]);
-  statusText_->setText(itemMap[selectedItem[RandomGuess]]);
+  statusText_->setText(itemMap[selectedItem[RandomGuess]] + " - " + commentMap[selectedItem[RandomGuess]]);
   letters_->reset();
   selectedItem.clear();
+  itemWidget_->clearTable();
+  ItemSeq = 1;
 }
 
 void PomodoroWidget::registerGuess(char c)
 {
+  WString title(tr("pomodoro.lottery"));
+  title_->setText(title.arg(name_));
+
   selectedItem.push_back(c - 'A');
   auto item = new Item(ItemSeq, widen(itemMap[c - 'A']), widen(commentMap[c - 'A']));
   itemWidget_->addItem(item);
