@@ -11,7 +11,8 @@ void ItemWidget::init()
   table_ = tablePtr.get();
   
   table_->setHeaderCount(1);
-  table_->setWidth(Wt::WLength("100%"));
+  table_->setWidth(Wt::WLength("60%"));
+  setContentAlignment(AlignmentFlag::Center);
 
   table_->elementAt(0, 0)->addWidget(cpp14::make_unique<WText>("#"));
   table_->elementAt(0, 1)->addWidget(cpp14::make_unique<WText>("Item"));
