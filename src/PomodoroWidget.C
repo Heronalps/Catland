@@ -8,7 +8,6 @@
 #include <Wt/WStringUtil.h>
 
 #include "Session.h"
-#include "Dictionary.h"
 #include "ItemWidget.h"
 #include "ImagesWidget.h"
 #include "LettersWidget.h"
@@ -49,7 +48,10 @@ PomodoroWidget::PomodoroWidget(const std::string &name)
   title_ = addWidget(cpp14::make_unique<WText>(tr("pomodoro.lottery")));
 
   itemWidget_ = addWidget(cpp14::make_unique<ItemWidget>());
+  addWidget(cpp14::make_unique<WBreak>());
   statusText_ = addWidget(cpp14::make_unique<WText>());
+  statusText_->addStyleClass("status");
+
   images_ = addWidget(cpp14::make_unique<ImagesWidget>(PicNumber));
 
   letters_ = addWidget(cpp14::make_unique<LettersWidget>());
@@ -72,7 +74,9 @@ void PomodoroWidget::draw()
   
   RandomGuess = distrib(gen);
   images_->showImage(selectedItem[RandomGuess]);
-  statusText_->setText("");
+  statusText_->setText(itemMap[selectedItem[RandomGuess]]);
+  letters_->reset();
+  selectedItem.clear();
 }
 
 void PomodoroWidget::registerGuess(char c)

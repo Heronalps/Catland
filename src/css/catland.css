@@ -73,6 +73,10 @@ h1 {
     font-size: xx-large;
 }
 
+.status {
+    font-size: x-large;
+}
+
 .selected-link {
     font-weight: bold;
 }

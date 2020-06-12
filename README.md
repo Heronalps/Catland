@@ -7,23 +7,18 @@ cmake ..
 make
 cd .. && ./build/src/catland.wt --docroot ./src --approot ./src --http-listen 0.0.0.0:8080
 ```
-## TODO
 
-### Process
+### Progress
 
 - ~~Move and compile codebase in Catland project~~
 
 - ~~Configure mysql and DBO on Mac~~
 
-- Catland and Pomodoro Font and icon
+- ~~Catland and Pomodoro Font and icon~~
 
-- Loose password sequence requirement
+- ~~EC2 and endpoint~~
 
-- ~~Transfer Highscore to History~~
-
-- EC2 and endpoint
-
-### Feature
+### TODO Feature
 
 - Guest without login
 

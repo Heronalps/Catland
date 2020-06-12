@@ -19,7 +19,6 @@ WT_ADD_FILE(${WT_PROJECT_TARGET}
   LettersWidget.C
   ImagesWidget.C
   HistoryWidget.C
-  Dictionary.C
   Item.C
 )
 
