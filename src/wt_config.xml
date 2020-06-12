@@ -1,5 +1,5 @@
 <server>
-    <application-settings location="*">
+    <application-settings location="/home/ubuntu/Catland/">
 	<properties>
 
 	    <!-- You need to register at google for this to work, and enter
@@ -24,6 +24,12 @@
 	    <property name="auth-mail-sender-address">
 	      ahourday@gmail.com
 	    </property>
+		<property name="baseURL">
+		  http://www.catland.live/
+		</property>
+		<property name="resourcesURL">
+		  resources/
+		</property>
 	</properties>
 	<progressive-bootstrap>true</progressive-bootstrap>
     </application-settings>
