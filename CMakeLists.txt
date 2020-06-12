@@ -8,10 +8,15 @@ ENDIF(NOT CMAKE_CXX_STANDARD)
 # SET(CMAKE_CXX_STANDARD_REQUIRED ON)
 # SET(CMAKE_CXX_EXTENSIONS OFF)
 
+# SET(EXAMPLES_WT_LIB wt)
+SET(EXAMPLES_CONNECTOR Wt::FCGI)
+
+
 OPTION(INSTALL_RESOURCES "Install resources directory" ON)
 OPTION(ENABLE_SSL "Enable cryptography functions, using OpenSSL" ON)
 OPTION(ENABLE_SQLITE "Build SQLite3 backend for Wt::Dbo" ON)
 OPTION(ENABLE_LIBWTDBO "Build Wt::Dbo" ON)
+OPTION(CONNECTOR_FCGI "Compile in FCGI connector (libwtfcgi) ?" ON)
 
 # The WT_ADD_FILE function builds a DLL in case of ISAPI, and an executable
 # in case of FCGI or HTTPD connectors. It also makes sure that the source files
@@ -30,6 +35,8 @@ MACRO(WT_ADD_FILE name)
   ELSE(CONNECTOR MATCHES "wtisapi")
     ADD_EXECUTABLE(${ARGV}) # ARGV - name
   ENDIF(CONNECTOR MATCHES "wtisapi")
+  
+  TARGET_LINK_LIBRARIES(${name} ${EXAMPLES_CONNECTOR} ${EXAMPLES_WT_LIB})
 
 ENDMACRO(WT_ADD_FILE)
 
