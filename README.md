@@ -27,3 +27,5 @@ cd .. && ./build/src/catland.wt --docroot ./src --approot ./src --http-listen 0.
 - Countdown Timer and counter
 
 - Option suggestions
+
+- Customized item and count
